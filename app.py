@@ -355,7 +355,7 @@ with st.container():
         ).encode(
             size=sizeCondition,             # step 4, chart 1 (only size)
         )
-        st.write(alt.layer(scatterplot2,line))
+        st.write(alt.layer(line,scatterplot2))
 
     with col2:
         st.markdown("####   \n")
