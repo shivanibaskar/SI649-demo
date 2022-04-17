@@ -299,26 +299,26 @@ with st.container():
         st.markdown("##### This is point 2")
         st.markdown("##### This is point 3")
 
-#Zooming and Panning
-zoom_and_pan=alt.selection_interval(bind="scales",encodings=["x"]) 
+# #Zooming and Panning
+# zoom_and_pan=alt.selection_interval(bind="scales",encodings=["x"]) 
 
-# Create a selection that chooses the nearest point & selects based on x-value
-selection = alt.selection(type='single',on='mouseover', empty='none' , nearest=True, fields=['datetime'])
+# # Create a selection that chooses the nearest point & selects based on x-value
+# selection = alt.selection(type='single',on='mouseover', empty='none' , nearest=True, fields=['datetime'])
 
-# The basic line
-line_chart = alt.Chart(df2).mark_line(size=2.5).encode(x=alt.X('datetime'),y=alt.Y("tweet_count:Q",title="Four-minute rolling average"),color='team:N').add_selection(zoom_and_pan)
+# # The basic line
+# line_chart = alt.Chart(df2).mark_line(size=2.5).encode(x=alt.X('datetime'),y=alt.Y("tweet_count:Q",title="Four-minute rolling average"),color='team:N').add_selection(zoom_and_pan)
 
-selectors = alt.Chart(df2).mark_point().encode(x='datetime',opacity=alt.value(0)).add_selection(selection)
+# selectors = alt.Chart(df2).mark_point().encode(x='datetime',opacity=alt.value(0)).add_selection(selection)
 
-vline = alt.Chart(df2).mark_rule(size=5,color="lightgrey").encode(x='datetime').transform_filter(selection)
+# vline = alt.Chart(df2).mark_rule(size=5,color="lightgrey").encode(x='datetime').transform_filter(selection)
 
-points = alt.Chart(df2).mark_line().encode(x='datetime',y="tweet_count:Q",color='team:N').mark_point(filled=True,size=70).\
-encode(opacity=alt.condition(selection, alt.value(1), alt.value(0)),\
-       color=alt.condition(selection,alt.value("black"),'team:N'))
+# points = alt.Chart(df2).mark_line().encode(x='datetime',y="tweet_count:Q",color='team:N').mark_point(filled=True,size=70).\
+# encode(opacity=alt.condition(selection, alt.value(1), alt.value(0)),\
+#        color=alt.condition(selection,alt.value("black"),'team:N'))
 
-tooltip = points.encode(tooltip=["tweet_count:Q",'datetime',"team:N"])
+# tooltip = points.encode(tooltip=["tweet_count:Q",'datetime',"team:N"])
 
-alt.layer(line_chart,selectors,vline,points,tooltip).properties(width=600, height=300)
+# alt.layer(line_chart,selectors,vline,points,tooltip).properties(width=600, height=300)
 
 
 
