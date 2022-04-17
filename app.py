@@ -276,7 +276,7 @@ with st.container():
     with col1:
         st.markdown("#### With Authors karma")
         plot5=alt.Chart(data).mark_circle(size=60).encode(
-        x=alt.X('author_karma:Q',axis=alt.Axis(title="Author Karma",format=".2fk"),scale=alt.Scale(domain=[0,400000])),
+        x=alt.X('author_karma:Q',axis=alt.Axis(title="Author Karma",format=".2f"),scale=alt.Scale(domain=[0,400000])),
         y=alt.Y(attribute+':Q',title='Number of '+attribute.title()),
         color=alt.Color('author_has_reddit_premium',legend=alt.Legend(title="Premium User",orient="top")),
         tooltip = [
