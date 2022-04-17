@@ -115,8 +115,9 @@ source = pd.DataFrame.from_records(
     [{'a': 1, 'b': 1, 'image': 'https://raw.githubusercontent.com/shivanibaskar/SI649-demo/main/scrapedimages/11.png'},
      {'a': 2, 'b': 2, 'image': 'https://raw.githubusercontent.com/shivanibaskar/SI649-demo/main/piecharts/10.png'}]
 )
-alt.Chart(source).mark_circle(size=200).encode(
+a=alt.Chart(source).mark_circle(size=200).encode(
     x='a',
     y='b',
     tooltip=['image']  # Must be a list for the image to render
 )
+a
