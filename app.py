@@ -302,38 +302,3 @@ with st.container():
 
 
 
-with st.container():
-    col_spacer1,col1,col2, spacer2 = st.columns((.1, 7,3, .1))
-    with col1:
-        st.markdown("#### For different number of colors in images")
-        # Manipulations for second scatter plot
-        img_df = pd.read_csv('color_data.csv')
-        df['colors'] = img_df['number_of_colors']
-        df2 = df.copy()
-        #df2['image'] = df2['index'].apply(lambda x: 'http://localhost:8888/files/Desktop/MDS/SI%20649/Group%20Project/Notebooks/piecharts/'+str(x+2)+'.png?_xsrf=2%7Cc9d848e0%7Cdbff42938cb51350c2ae90bc3422db02%7C1646800167')
-        df2['image'] = df2['index'].apply(lambda x:'https://raw.githubusercontent.com/shivanibaskar/SI649-demo/main/piecharts/'+str(x+2)+'.png')
-        # Scatterplot2 - For number of colors
-        
-        selection=alt.selection_single(on='mouseover',empty="none");
-        sizeCondition=alt.condition(selection,alt.value(400),alt.value(80))
-        scatterplot2 = alt.Chart(df2).mark_line().\
-        encode(
-            alt.X('colors:Q',title='Number of Colors',axis=alt.Axis(labelAngle=0),scale = alt.Scale(domain = [min(df.time_created),max(df.time_created)])),
-            alt.Y(attribute+':Q',title='Number of '+attribute.title()),
-            alt.Color('is_trending:N',title=' ',legend=alt.Legend(orient='top')),
-            tooltip=['image','flairs','is_dynamic','is_interactive']
-            ).mark_point(filled=True,size=70).encode(opacity=alt.condition(selection, alt.value(1), alt.value(0)),\
-       size=sizeCondition). \
-        properties(width=700,height=500).configure_axis(
-            labelFontSize=20,
-            titleFontSize=20).configure_legend(titleColor='black', titleFontSize=18,labelFontSize=18).interactive()
-        scatterplot2
-    with col2:
-        st.markdown("####   \n")
-        st.markdown("####   \n")
-        st.markdown("####   \n")
-        st.markdown("####   \n")
-        st.markdown("####   \n")
-        st.markdown("##### This is point 1")
-        st.markdown("##### This is point 2")
-        st.markdown("##### This is point 3")
