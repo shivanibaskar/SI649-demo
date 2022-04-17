@@ -287,37 +287,12 @@ with st.container():
             titleFontSize=20).configure_legend(titleColor='black', titleFontSize=18,labelFontSize=18).interactive()
         st.write(plot5)
         
-        
-       
-
-
-
-
-
-# AUTHOR'S KARMA AFFECTING ATTRIBUTE
-    # with col2:
-    #     st.subheader("Does an author with a better Karma score more likely to get more awards?")
-    #     plot2=alt.Chart(data).mark_circle(size=60).encode(
-    #     x=alt.X('author_karma:Q',axis=alt.Axis(grid=False,title="Author Karma"),scale=alt.Scale(domain=[0,400000])),
-    #     y=alt.Y('total_awards:Q',axis=alt.Axis(grid=False,title="Total awards")),
-    #     color=alt.Color('author_has_reddit_premium',legend=alt.Legend(title="Premium User")),
-    #     tooltip = [
-    #         alt.Tooltip(field = 'author_karma', type = "quantitative",title = "Author Karma"),
-    #         alt.Tooltip(field = 'total_awards', type = "quantitative",title = "Total Awards"),
-    #         alt.Tooltip(field = 'author_has_reddit_premium', type = "quantitative",title = "Premium User")]).interactive()
-    #     st.write(plot2.properties(width=550,height=550))
-
-# ATTRIBUTE AND AUTHOR KARMA
-# filter_data = data[["urls",'author_karma',"total_awards","total_votes",'author_has_reddit_premium']]
-# data1 =filter_data.melt(['urls','author_karma','author_has_reddit_premium'], var_name='attribute', value_name='count')
-# attribute_selected = st.radio("Select Emoji",('total_awards', 'total_votes'))
-# plot3=alt.Chart(data1).mark_circle(size=60).encode(
-#     x=alt.X('author_karma:Q',axis=alt.Axis(grid=False,title="Author Karma"),scale=alt.Scale(domain=[0,400000])),
-#     y=alt.Y('count:Q',axis=alt.Axis(grid=False,title="Attribute")),
-#     color=alt.Color('author_has_reddit_premium',legend=alt.Legend(title="Premium User")),
-#     tooltip = [
-#         alt.Tooltip(field = 'author_karma', type = "quantitative",title = "Author Karma"),
-#         alt.Tooltip(field = 'total_awards', type = "quantitative",title = "Total Awards"),
-#         alt.Tooltip(field = 'author_has_reddit_premium', type = "quantitative",title = "Premium User")]
-# ).transform_filter(attribute_selected == alt.datum.attribute).interactive()
-# st.write(plot3)    
+    with col2:
+        st.markdown("####   \n")
+        st.markdown("####   \n")
+        st.markdown("####   \n")
+        st.markdown("####   \n")
+        st.markdown("####   \n")
+        st.markdown("##### This is point 1")
+        st.markdown("##### This is point 2")
+        st.markdown("##### This is point 3")
