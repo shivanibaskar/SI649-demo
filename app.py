@@ -113,7 +113,7 @@ import pandas as pd
 
 source = pd.DataFrame.from_records(
     [{'a': 1, 'b': 1, 'image': 'https://raw.githubusercontent.com/shivanibaskar/SI649-demo/main/scrapedimages/11.png'},
-     {'a': 2, 'b': 2, 'image': 'https://avatars.githubusercontent.com/u/11796929?s=200&v=4'}]
+     {'a': 2, 'b': 2, 'image': 'https://raw.githubusercontent.com/shivanibaskar/SI649-demo/main/piecharts/10.png'}]
 )
 alt.Chart(source).mark_circle(size=200).encode(
     x='a',
