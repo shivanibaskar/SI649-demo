@@ -239,7 +239,7 @@ with st.container():
         #df2['image'] = df2['index'].apply(lambda x: 'http://localhost:8888/files/Desktop/MDS/SI%20649/Group%20Project/Notebooks/piecharts/'+str(x+2)+'.png?_xsrf=2%7Cc9d848e0%7Cdbff42938cb51350c2ae90bc3422db02%7C1646800167')
         df2['image'] = df2['index'].apply(lambda x:'https://raw.githubusercontent.com/shivanibaskar/SI649-demo/main/piecharts/'+str(x+2)+'.png')
         # Scatterplot2 - For number of colors
-        scatterplot2 = alt.Chart(df2).mark_point().\
+        scatterplot2 = alt.Chart(df2).mark_circle().\
         encode(
             alt.X('colors:Q',title='Number of Colors',axis=alt.Axis(labelAngle=0),scale = alt.Scale(domain = [min(df.time_created),max(df.time_created)])),
             alt.Y(attribute+':Q',title='Number of '+attribute.title()),
