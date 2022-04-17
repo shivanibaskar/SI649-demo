@@ -271,7 +271,7 @@ with st.container():
 
 
 with st.container():
-    #data['author_has_reddit_premium'] = data.author_has_reddit_premium.apply(lambda x: 'True' if x=='true' else 'False')
+    data['author_has_reddit_premium'] = data.author_has_reddit_premium.apply(lambda x: 'True' if x==1 else 'False')
     col_spacer1,col1,col2, spacer2 = st.columns((.1, 7,3, .1))
     with col1:
         st.markdown("#### With Authors karma")
