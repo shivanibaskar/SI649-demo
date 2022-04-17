@@ -277,7 +277,7 @@ with st.container():
         plot5=alt.Chart(data).mark_circle(size=60).encode(
         x=alt.X('author_karma:Q',axis=alt.Axis(grid=False,title="Author Karma"),scale=alt.Scale(domain=[0,400000])),
         y=alt.Y(attribute+':Q',title='Number of '+attribute.title()),
-        color=alt.Color('author_has_reddit_premium',legend=alt.Legend(title="Premium User")),
+        color=alt.Color('author_has_reddit_premium',legend=alt.Legend(title="Premium User",orient="top")),
         tooltip = [
             alt.Tooltip(field = 'author_karma', type = "quantitative",title = "Author Karma"),
             alt.Tooltip(field = 'total_awards', type = "quantitative",title = "Total Awards"),
