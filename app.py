@@ -14,7 +14,7 @@ become popular or trending.")
     st.markdown("##### Oftentimes, complex visualizations that display a lot of information receive very few upvotes. For instance, aesthetics are not the only factor for a \
 visualization to gain upvotes as beautiful in the r/dataisbeautiful subreddit")
     st.markdown("##### What factors cause a visualization to trend in this subreddit? This would be the same answering what makes the Reddit feed algorithm tag a post as 'rising'?")
-    st.markdown("##### To answer this, we collected data in regular intervals over one week to obtain 100 trending posts and 70 non trending posts.")
+    st.markdown("##### To answer this, we collected data in regular intervals over one week to obtain 102 trending posts and 71 non trending posts.")
     st.markdown("##### Let us consider the following metrics")
     st.markdown("##### - Number of Upvotes")
     st.markdown("##### - Number of Downvotes")
