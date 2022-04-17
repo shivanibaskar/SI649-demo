@@ -84,7 +84,7 @@ st.write(plot3)
 
 import datetime
 data.time_created = data.time_created.apply(lambda x: datetime.datetime.fromtimestamp(x).hour)
-data['image'] = data['index'].apply(lambda x: 'https://github.com/shivanibaskar/SI649-demo/blob/main/scrapedimages/'+str(x+2)+'.png')
+data['image'] = data['Unnamed: 0'].apply(lambda x: 'https://github.com/shivanibaskar/SI649-demo/blob/main/scrapedimages/'+str(x+2)+'.png')
 
 
 # Scatterplot 1 - By Hour of Creation
