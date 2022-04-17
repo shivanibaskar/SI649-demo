@@ -295,7 +295,7 @@ with st.container():
         plot5=alt.Chart(data).mark_circle(size=60).encode(
         x=alt.X('author_karma:Q',axis=alt.Axis(title="Author Karma"),scale=alt.Scale(domain=[0,400000])),
         y=alt.Y(attribute+':Q',title='Number of '+attribute.title()),
-        color=alt.Color('author_has_reddit_premium',legend=alt.Legend(title="Author Account Type",orient="top")),
+        color=alt.Color('author_has_reddit_premium',legend=alt.Legend(title=" ",orient="top")),
         tooltip = [
              alt.Tooltip(field = attribute, type = "quantitative",title = 'Number of '+attribute.title()),
             alt.Tooltip(field = 'author_karma', type = "quantitative",title = "Author Karma"),
@@ -303,6 +303,13 @@ with st.container():
             .configure_axis(
             labelFontSize=20,
             titleFontSize=20).configure_legend(titleColor='black', titleFontSize=18,labelFontSize=18).interactive()
+        selection=alt.selection_single(on='mouseover',empty="none");
+        sizeCondition=alt.condition(selection,alt.value(400),alt.value(80))
+        plot5 = plot5.add_selection(
+            selection                       # step 3, chart 1
+        ).encode(
+            size=sizeCondition,             # step 4, chart 1 (only size)
+        )
         st.write(plot5)
         
     with col2:
@@ -349,30 +356,3 @@ with st.container():
         st.markdown("###### Github repository containing data and analysis [here](https://www.reddit.com/r/dataisbeautiful/)")
 
 
-# AUTHOR'S KARMA AFFECTING ATTRIBUTE
-    # with col2:
-    #     st.subheader("Does an author with a better Karma score more likely to get more awards?")
-    #     plot2=alt.Chart(data).mark_circle(size=60).encode(
-    #     x=alt.X('author_karma:Q',axis=alt.Axis(grid=False,title="Author Karma"),scale=alt.Scale(domain=[0,400000])),
-    #     y=alt.Y('total_awards:Q',axis=alt.Axis(grid=False,title="Total awards")),
-    #     color=alt.Color('author_has_reddit_premium',legend=alt.Legend(title="Premium User")),
-    #     tooltip = [
-    #         alt.Tooltip(field = 'author_karma', type = "quantitative",title = "Author Karma"),
-    #         alt.Tooltip(field = 'total_awards', type = "quantitative",title = "Total Awards"),
-    #         alt.Tooltip(field = 'author_has_reddit_premium', type = "quantitative",title = "Premium User")]).interactive()
-    #     st.write(plot2.properties(width=550,height=550))
-
-# ATTRIBUTE AND AUTHOR KARMA
-# filter_data = data[["urls",'author_karma',"total_awards","total_votes",'author_has_reddit_premium']]
-# data1 =filter_data.melt(['urls','author_karma','author_has_reddit_premium'], var_name='attribute', value_name='count')
-# attribute_selected = st.radio("Select Emoji",('total_awards', 'total_votes'))
-# plot3=alt.Chart(data1).mark_circle(size=60).encode(
-#     x=alt.X('author_karma:Q',axis=alt.Axis(grid=False,title="Author Karma"),scale=alt.Scale(domain=[0,400000])),
-#     y=alt.Y('count:Q',axis=alt.Axis(grid=False,title="Attribute")),
-#     color=alt.Color('author_has_reddit_premium',legend=alt.Legend(title="Premium User")),
-#     tooltip = [
-#         alt.Tooltip(field = 'author_karma', type = "quantitative",title = "Author Karma"),
-#         alt.Tooltip(field = 'total_awards', type = "quantitative",title = "Total Awards"),
-#         alt.Tooltip(field = 'author_has_reddit_premium', type = "quantitative",title = "Premium User")]
-# ).transform_filter(attribute_selected == alt.datum.attribute).interactive()
-# st.write(plot3)    
