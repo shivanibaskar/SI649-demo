@@ -335,9 +335,8 @@ with st.container():
         # Scatterplot2 - For number of colors
         line =alt.Chart(df2).mark_line().encode(alt.X('colors:Q',title='Number of Colors',axis=alt.Axis(labelAngle=0),scale = alt.Scale(domain = [min(df.time_created),max(df.time_created)])),
             alt.Y(attribute+':Q',title='Number of '+attribute.title()),
-            alt.Color('is_trending:N',title=' ',legend=alt.Legend(orient='top')))
-        line.properties(width=700,height=500).configure_axis(labelFontSize=20,titleFontSize=20).configure_legend(titleColor='black', titleFontSize=18,labelFontSize=18).interactive()
-
+            alt.Color('is_trending:N',title=' ',legend=alt.Legend(orient='top'))).properties(width=700,height=500)
+        line
         # scatterplot2 = alt.Chart(df2).mark_circle().\
         # encode(
         #     alt.X('colors:Q',title='Number of Colors',axis=alt.Axis(labelAngle=0),scale = alt.Scale(domain = [min(df.time_created),max(df.time_created)])),
