@@ -81,3 +81,29 @@ plot3=alt.Chart(data1).mark_circle(size=60).encode(
         alt.Tooltip(field = 'author_has_reddit_premium', type = "quantitative",title = "Premium User")]
 ).transform_filter(attribute_selected == alt.datum.attribute).interactive()
 st.write(plot3)    
+
+import datetime
+data.time_created = data.time_created.apply(lambda x: datetime.datetime.fromtimestamp(x).hour)
+data['image'] = data['index'].apply(lambda x: 'https://github.com/shivanibaskar/SI649-demo/blob/main/scrapedimages/'+str(x+2)+'.png')
+
+
+# Scatterplot 1 - By Hour of Creation
+scatterplot1 = alt.Chart(data).mark_circle().\
+encode(
+    alt.X('time_created:Q',title='Hour of Creation',axis=alt.Axis(labelAngle=0),scale = alt.Scale(domain = [min(data.time_created),max(data.time_created)])),
+    alt.Y('upvotes:Q',title='Number of upvotes'),
+    alt.Color('is_trending:N',title='Trending or Not Trending'),
+    tooltip=['image','flairs','is_dynamic','is_interactive']
+    ). \
+properties(width=600,height=300).configure_axis(
+    labelFontSize=12,
+    titleFontSize=14).configure_legend(titleColor='black', titleFontSize=14,labelFontSize=12).interactive()
+
+selection=alt.selection_single(on='mouseover',empty="none");
+sizeCondition=alt.condition(selection,alt.value(400),alt.value(80))
+scatterplot1 = scatterplot1.add_selection(
+    selection                       # step 3, chart 1
+).encode(
+    size=sizeCondition,             # step 4, chart 1 (only size)
+)
+scatterplot1
