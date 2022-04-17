@@ -331,31 +331,31 @@ with st.container():
         img_df = pd.read_csv('color_data.csv')
         df['colors'] = img_df['number_of_colors']
         df2 = df.copy()
-        #df2['image'] = df2['index'].apply(lambda x: 'http://localhost:8888/files/Desktop/MDS/SI%20649/Group%20Project/Notebooks/piecharts/'+str(x+2)+'.png?_xsrf=2%7Cc9d848e0%7Cdbff42938cb51350c2ae90bc3422db02%7C1646800167')
         df2['image'] = df2['index'].apply(lambda x:'https://raw.githubusercontent.com/shivanibaskar/SI649-demo/main/piecharts/'+str(x+2)+'.png')
         # Scatterplot2 - For number of colors
         line =alt.Chart(df2).mark_line().encode(alt.X('colors:Q',title='Number of Colors',axis=alt.Axis(labelAngle=0),scale = alt.Scale(domain = [min(df.time_created),max(df.time_created)])),
             alt.Y(attribute+':Q',title='Number of '+attribute.title()),
             alt.Color('is_trending:N',title=' ',legend=alt.Legend(orient='top')))
-        scatterplot2 = alt.Chart(df2).mark_circle().\
-        encode(
-            alt.X('colors:Q',title='Number of Colors',axis=alt.Axis(labelAngle=0),scale = alt.Scale(domain = [min(df.time_created),max(df.time_created)])),
-            alt.Y(attribute+':Q',title='Number of '+attribute.title()),
-            alt.Color('is_trending:N',title=' ',legend=alt.Legend(orient='top')),
-            tooltip=['image','flairs','is_dynamic','is_interactive']
-            ). \
-        properties(width=700,height=500).configure_axis(
-            labelFontSize=20,
-            titleFontSize=20).configure_legend(titleColor='black', titleFontSize=18,labelFontSize=18).interactive()
+        line    
+        # scatterplot2 = alt.Chart(df2).mark_circle().\
+        # encode(
+        #     alt.X('colors:Q',title='Number of Colors',axis=alt.Axis(labelAngle=0),scale = alt.Scale(domain = [min(df.time_created),max(df.time_created)])),
+        #     alt.Y(attribute+':Q',title='Number of '+attribute.title()),
+        #     alt.Color('is_trending:N',title=' ',legend=alt.Legend(orient='top')),
+        #     tooltip=['image','flairs','is_dynamic','is_interactive']
+        #     ). \
+        # properties(width=700,height=500).configure_axis(
+        #     labelFontSize=20,
+        #     titleFontSize=20).configure_legend(titleColor='black', titleFontSize=18,labelFontSize=18).interactive()
 
-        selection=alt.selection_single(on='mouseover',empty="none");
-        sizeCondition=alt.condition(selection,alt.value(400),alt.value(80))
-        scatterplot2 = scatterplot2.add_selection(
-            selection                       # step 3, chart 1
-        ).encode(
-            size=sizeCondition,             # step 4, chart 1 (only size)
-        )
-        alt.layer(line,scatterplot2)
+        # selection=alt.selection_single(on='mouseover',empty="none");
+        # sizeCondition=alt.condition(selection,alt.value(400),alt.value(80))
+        # scatterplot2 = scatterplot2.add_selection(
+        #     selection                       # step 3, chart 1
+        # ).encode(
+        #     size=sizeCondition,             # step 4, chart 1 (only size)
+        # )
+        # alt.layer(line,scatterplot2)
 
     with col2:
         st.markdown("####   \n")
