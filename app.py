@@ -270,6 +270,24 @@ with st.container():
         st.markdown("##### This is point 3")
 
 
+with st.container():
+    col_spacer1,col1,col2, spacer2 = st.columns((.1, 7,3, .1))
+    with col1:
+        st.markdown("#### With Authors karma")
+        plot5=alt.Chart(data).mark_circle(size=60).encode(
+        x=alt.X('author_karma:Q',axis=alt.Axis(grid=False,title="Author Karma"),scale=alt.Scale(domain=[0,400000])),
+        y=alt.Y(attribute+':Q',title='Number of '+attribute.title()),
+        color=alt.Color('author_has_reddit_premium',legend=alt.Legend(title="Premium User")),
+        tooltip = [
+            alt.Tooltip(field = 'author_karma', type = "quantitative",title = "Author Karma"),
+            alt.Tooltip(field = 'total_awards', type = "quantitative",title = "Total Awards"),
+            alt.Tooltip(field = 'author_has_reddit_premium', type = "quantitative",title = "Premium User")]). properties(width=700,height=500).configure_axis(
+            labelFontSize=20,
+            titleFontSize=20).configure_legend(titleColor='black', titleFontSize=18,labelFontSize=18).interactive()
+        st.write(plot5)
+        
+        
+       
 
 
 
