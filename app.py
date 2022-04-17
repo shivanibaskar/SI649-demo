@@ -327,7 +327,6 @@ with st.container():
         properties(width=700,height=500).configure_axis(
             labelFontSize=20,
             titleFontSize=20).configure_legend(titleColor='black', titleFontSize=18,labelFontSize=18).interactive()
-
         scatterplot2
     with col2:
         st.markdown("####   \n")
