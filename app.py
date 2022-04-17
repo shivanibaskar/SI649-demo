@@ -303,15 +303,11 @@ with st.container():
 # zoom_and_pan=alt.selection_interval(bind="scales",encodings=["x"]) 
 
 # # Create a selection that chooses the nearest point & selects based on x-value
-# selection = alt.selection(type='single',on='mouseover', empty='none' , nearest=True, fields=['datetime'])
+# selection = alt.selection_single(on='mouseover',empty="none");
 
 # # The basic line
-# line_chart = alt.Chart(df2).mark_line(size=2.5).encode(x=alt.X('datetime'),y=alt.Y("tweet_count:Q",title="Four-minute rolling average"),color='team:N').add_selection(zoom_and_pan)
-
+# line_chart = alt.Chart(df2).mark_line().encode(alt.X('colors:Q',title='Number of Colors',axis=alt.Axis(labelAngle=0),scale = alt.Scale(domain = [min(df.time_created),max(df.time_created)])),alt.Y(attribute+':Q',title='Number of '+attribute.title()),alt.Color('is_trending:N',title=' ',legend=alt.Legend(orient='top')))
 # selectors = alt.Chart(df2).mark_point().encode(x='datetime',opacity=alt.value(0)).add_selection(selection)
-
-# vline = alt.Chart(df2).mark_rule(size=5,color="lightgrey").encode(x='datetime').transform_filter(selection)
-
 # points = alt.Chart(df2).mark_line().encode(x='datetime',y="tweet_count:Q",color='team:N').mark_point(filled=True,size=70).\
 # encode(opacity=alt.condition(selection, alt.value(1), alt.value(0)),\
 #        color=alt.condition(selection,alt.value("black"),'team:N'))
@@ -335,7 +331,9 @@ with st.container():
         # Scatterplot2 - For number of colors
         line =alt.Chart(df2).mark_line().encode(alt.X('colors:Q',title='Number of Colors',axis=alt.Axis(labelAngle=0),scale = alt.Scale(domain = [min(df.time_created),max(df.time_created)])),
             alt.Y(attribute+':Q',title='Number of '+attribute.title()),
-            alt.Color('is_trending:N',title=' ',legend=alt.Legend(orient='top'))).properties(width=800,height=500)
+            alt.Color('is_trending:N',title=' ',legend=alt.Legend(orient='top'))).properties(width=800,height=500).mark_point().encode(alt.X('colors:Q',title='Number of Colors',axis=alt.Axis(labelAngle=0),scale = alt.Scale(domain = [min(df.time_created),max(df.time_created)])),
+            alt.Y(attribute+':Q',title='Number of '+attribute.title()),
+            alt.Color('is_trending:N',title=' ',legend=alt.Legend(orient='top')))
         line
         # scatterplot2 = alt.Chart(df2).mark_circle().\
         # encode(
