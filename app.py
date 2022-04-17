@@ -84,7 +84,7 @@ st.write(plot3)
 
 import datetime
 data.time_created = data.time_created.apply(lambda x: datetime.datetime.fromtimestamp(x).hour)
-data['image'] = data['Unnamed: 0'].apply(lambda x:'https://raw.githubusercontent.com/shivanibaskar/SI649-demo/main/scrapedimages'+str(x+2)+'.png')
+data['image'] = data['Unnamed: 0'].apply(lambda x:'https://raw.githubusercontent.com/shivanibaskar/SI649-demo/main/scrapedimages/'+str(x+2)+'.png')
 
 
 # Scatterplot 1 - By Hour of Creation
@@ -112,7 +112,7 @@ import altair as alt
 import pandas as pd
 
 source = pd.DataFrame.from_records(
-    [{'a': 1, 'b': 1, 'image': 'https://altair-viz.github.io/_static/altair-logo-light.png'},
+    [{'a': 1, 'b': 1, 'image': 'https://raw.githubusercontent.com/shivanibaskar/SI649-demo/main/scrapedimages/11.png'},
      {'a': 2, 'b': 2, 'image': 'https://avatars.githubusercontent.com/u/11796929?s=200&v=4'}]
 )
 alt.Chart(source).mark_circle(size=200).encode(
