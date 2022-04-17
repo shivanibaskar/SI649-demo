@@ -261,7 +261,7 @@ with st.container():
             alt.X('colors:Q',title='Number of Colors',axis=alt.Axis(labelAngle=0),scale = alt.Scale(domain = [min(df.time_created),max(df.time_created)])),
             alt.Y(attribute+':Q',title='Number of '+attribute.title()),
             alt.Color('is_trending:N',title=' ',legend=alt.Legend(orient='top')),
-            tooltip=['image',attribute,'flairs','is_dynamic','is_interactive','list_of_awards']
+            tooltip=['image',attribute,'colors','flairs','is_dynamic','is_interactive','list_of_awards']
             ). \
         properties(width=700,height=500).configure_axis(
             labelFontSize=20,
@@ -326,7 +326,7 @@ with st.container():
             alt.Color('is_trending:N',title=' ',legend=alt.Legend(orient='top')),
             ). \
         properties(width=350,height=350).configure_axis(
-            labelFontSize=20,
+            labelFontSize=18,
             titleFontSize=20).configure_legend(titleColor='black', titleFontSize=18,labelFontSize=18)
         mosaic4
 
@@ -353,6 +353,7 @@ with st.container():
     col_spacer1,col1,col2, spacer2 = st.columns((.1, 7,3, .1))
     with col1:
         st.markdown("###### Thanks for reading this article :)")
+        st.markdown("###### Written by Hareeshwar Karthikeyan and Shivani Baskar")
         st.markdown("###### Github repository containing data and analysis [here](https://www.reddit.com/r/dataisbeautiful/)")
 
 
