@@ -281,7 +281,8 @@ with st.container():
         tooltip = [
             alt.Tooltip(field = 'author_karma', type = "quantitative",title = "Author Karma"),
             alt.Tooltip(field = 'total_awards', type = "quantitative",title = "Total Awards"),
-            alt.Tooltip(field = 'author_has_reddit_premium', type = "quantitative",title = "Premium User")]). properties(width=700,height=500).configure_axis(
+            alt.Tooltip(field = 'author_has_reddit_premium', type = "quantitative",title = "Premium User")]).properties(width=700,height=500)\
+            .configure_axis(
             labelFontSize=20,
             titleFontSize=20).configure_legend(titleColor='black', titleFontSize=18,labelFontSize=18).interactive()
         st.write(plot5)
